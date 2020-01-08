@@ -14,8 +14,8 @@ app.use(cors());
 
 app.use('/api/v1/expenses', require('./routes/expenses'));
 app.use('/api/v1/incomes', require('./routes/incomes'));
-// app.use('/api/v1/goal',require('./routes/expenses'));
-// app.use('/api/v1/rate',require('./routes/expenses'));
+app.use('/api/v1/goal', require('./routes/goal'));
+app.use('/api/v1/rate', require('./routes/rate'));
 
 const PORT = process.env.PORT || 5000;
 

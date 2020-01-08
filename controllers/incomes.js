@@ -24,7 +24,7 @@ exports.getIncomes = async (req, res) => {
 exports.addIncome = async (req, res) => {
   try {
     // validation
-    const incomes = await Incomes.create(req.body);
+    const incomes = await Incomes.create({ ...req.body, editDate: Date.now() });
 
     return res.status(201).json({
       success: true,
@@ -60,6 +60,7 @@ exports.deleteIncome = async (req, res) => {
 
 exports.editIncome = async (req, res) => {
   try {
+    req.body.editDate = Date.now();
     const incomes = await Incomes.findOneAndUpdate(req.body._id, req.body, {
       new: true
     });

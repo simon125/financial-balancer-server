@@ -25,7 +25,10 @@ exports.getExpenses = async (req, res) => {
 exports.addExpense = async (req, res) => {
   try {
     // validation
-    const expenses = await Expenses.create(req.body);
+    const expenses = await Expenses.create({
+      ...req.body,
+      editDate: Date.now()
+    });
 
     return res.status(201).json({
       success: true,
@@ -61,6 +64,7 @@ exports.deleteExpense = async (req, res) => {
 
 exports.editExpense = async (req, res) => {
   try {
+    req.body.editDate = Date.now();
     const expenses = await Expenses.findOneAndUpdate(req.body._id, req.body, {
       new: true
     });

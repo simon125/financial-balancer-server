@@ -13,6 +13,9 @@ const ExpenseSchema = new mongoose.Schema({
   date: {
     type: String,
     required: [true, 'Please add date of shopping']
+  },
+  editDate: {
+    type: Date
   }
 });
 

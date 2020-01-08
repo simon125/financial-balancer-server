@@ -13,6 +13,9 @@ const IncomesSchema = new mongoose.Schema({
   date: {
     type: String,
     required: [true, 'Please add date of getting money']
+  },
+  editDate: {
+    type: Date
   }
 });
 
